@@ -119,12 +119,6 @@ VBOXMANAGEPATH=D:\Oracle\VirtualBox\VBoxManage.exe naksu
 
 However, please report these problems since we would like to make naksu as easy to use as possible.
 
-## TODO
-
-Things to consider later:
-
-- Avoid asking administrator rights (Windows): [Github](https://stackoverflow.com/questions/31558066/how-to-ask-for-administer-privileges-on-windows-with-go)
-
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
