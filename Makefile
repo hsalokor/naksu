@@ -35,7 +35,7 @@ windows: naksu.exe
 linux: naksu
 
 src/naksu.syso: res/windows/*
-	$(RSRC) -arch="amd64" -ico="res/windows/naksu.ico" -o src/naksu.syso
+	$(RSRC) -arch="amd64" -manifest="res/windows/naksu.manifest" -ico="res/windows/naksu.ico" -o src/naksu.syso
 
 naksu.exe: src/*
 	GOPATH=$(current_dir)/ GOOS=windows GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ CGO_LDFLAGS="-L$(MINGW_LIB)" $(GO) build -o bin/naksu.exe naksu
