@@ -27,7 +27,7 @@ func initDefaults() {
 		defaultValue{"common", "iniVersion", strconv.FormatInt(1, 10)},
 		defaultValue{"common", "language", "fi"},
 		defaultValue{"selfupdate", "disabled", strconv.FormatBool(false)},
-		defaultValue{"selfupdate", "useBeta", strconv.FormatBool(false)},
+		defaultValue{"selfupdate", "channel", "release"},
 	}
 }
 
