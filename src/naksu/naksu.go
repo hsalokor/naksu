@@ -20,6 +20,8 @@ const URLTest = "http://static.abitti.fi/usbimg/qa/latest.txt"
 var isDebug bool
 
 func main() {
+	// Load configuration if it exists
+	config.Load()
 	// Set default UI language
 	xlate.SetLanguage("fi")
 
@@ -60,6 +62,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	config.Save()
 
 	mebroutines.LogDebug("Exiting GUI loop")
 }
