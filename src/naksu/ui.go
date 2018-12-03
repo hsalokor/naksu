@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"naksu/config"
 	"naksu/mebroutines"
 	"naksu/mebroutines/backup"
 	"naksu/mebroutines/install"
@@ -91,7 +92,14 @@ func createMainWindowElements() {
 	comboboxLang.Append("Suomeksi")
 	comboboxLang.Append("På svenska")
 	comboboxLang.Append("In English")
-	comboboxLang.SetSelected(0)
+	switch config.GetLanguage() {
+	case "fi":
+		comboboxLang.SetSelected(0)
+	case "sv":
+		comboboxLang.SetSelected(1)
+	case "en":
+		comboboxLang.SetSelected(1)
+	}
 
 	labelBox = ui.NewLabel("")
 	labelStatus = ui.NewLabel("")
@@ -347,13 +355,14 @@ func bindLanguageSwitching() {
 	comboboxLang.OnSelected(func(*ui.Combobox) {
 		switch comboboxLang.Selected() {
 		case 0:
-			xlate.SetLanguage("fi")
+			config.SetLanguage("fi")
 		case 1:
-			xlate.SetLanguage("sv")
+			config.SetLanguage("sv")
 		case 2:
-			xlate.SetLanguage("en")
+			config.SetLanguage("en")
 		}
 
+		xlate.SetLanguage(config.GetLanguage())
 		translateUILabels()
 	})
 }
