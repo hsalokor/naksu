@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"naksu/config"
 	"naksu/mebroutines"
 	"naksu/xlate"
 	"os"
@@ -39,6 +40,7 @@ func handleOptionalArgument(longName string, parser *flags.Parser, function func
 func main() {
 	// Load configuration if it exists
 	config.Load()
+
 	// Set default UI language
 	xlate.SetLanguage(config.GetLanguage())
 
@@ -54,6 +56,7 @@ func main() {
 	handleOptionalArgument("debug", parser, func(opt *flags.Option) {
 		isDebug = true
 	})
+
 	handleOptionalArgument("version", parser, func(opt *flags.Option) {
 		fmt.Printf("Naksu version is %v\n", version)
 		os.Exit(0)
@@ -61,9 +64,15 @@ func main() {
 
 	handleOptionalArgument("channel", parser, func(opt *flags.Option) {
 		config.SetReleaseChannel(opt.String())
+		config.Save()
 	})
 
-	RunSelfUpdate(false, false)
+	handleOptionalArgument("self-update", parser, func(opt *flags.Option) {
+		config.SetReleaseChannel(opt.String())
+		config.Save()
+	})
+
+	RunSelfUpdate()
 
 	mebroutines.SetDebug(isDebug)
 
