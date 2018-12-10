@@ -1,5 +1,7 @@
 # naksu
 
+NOTE: This repo works as development workbench for non-existing releases.
+
 `naksu` is collection of helper scripts for MEB stickless Abitti/matriculation exam servers.
 In real life Naksu is Onerva's (the [Abitti model teacher](https://www.abitti.fi/fi/tutustu/)) cat.
 
